@@ -25,3 +25,12 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+@font-face {
+  font-family: 'Caprismo';
+  src: url('/fonts/Caprasimo-Regular.ttf');
+}
+
+body {
+  font-family: 'Caprismo', sans-serif;
+}

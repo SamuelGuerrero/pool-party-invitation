@@ -1,14 +1,13 @@
 "use client";
-
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
 export default function Home() {
-  const [userId, setUserId] = useState<string>("");
   const [userData, setUserData] = useState({
     id: "",
     status: "",
     urlImage: "",
+    name: "",
   });
 
   useEffect(() => {
@@ -20,7 +19,7 @@ export default function Home() {
       .then((data) => setUserData(data));
   }, []);
 
-  const imageRef = useRef(null);
+  const imageRef = useRef<any>(null);
 
   function handleDownloadImage() {
     const link = document.createElement("a");
@@ -30,10 +29,16 @@ export default function Home() {
   }
 
   return (
-    <div style={{backgroundImage: `url("https://i.postimg.cc/SRFS8tYT/fondo.jpg")`}} className="flex bg-gradient-to-r from-slate-900 via-purple-900 to-slate-900 pt-10 flex-col text-white items-center min-h-screen w-full">
+    <div
+      style={{
+        backgroundImage: `url("https://i.postimg.cc/jqgjv99j/fondo.jpg")`,
+        backgroundSize: "cover",
+      }}
+      className="flex bg-gradient-to-r from-slate-900 via-purple-900 to-slate-900 pt-10 flex-col text-white items-center min-h-screen w-full"
+    >
       <div className="flex items-center">
-        <h1 className="text-3xl font-bold animate-pulse shadow-xl text-pink-300">
-          Hola Samuel
+        <h1 className="text-3xl animate-pulse font-cap shadow-xl text-pink-300">
+          Hola {userData.name}
         </h1>{" "}
         <Image
           className="animate-bounce"
@@ -55,7 +60,11 @@ export default function Home() {
               className="w-[calc(100%-3rem)] mx-auto rounded-3xl shadow-lg shadow-pink-400"
             />
           </div>
-        ) : undefined}
+        ) : (
+          <div className="w-full flex justify-center">
+            <h1>Cargando...</h1>
+          </div>
+        )}
       </div>
 
       <button
@@ -66,7 +75,7 @@ export default function Home() {
       </button>
 
       <section className="text-black mx-6 mb-3">
-        <h1 className="font-medium text-3xl mt-8 text-center text-violet-400">
+        <h1 className="font-medium text-3xl mt-8 text-center text-pink-500">
           Instrucciones
         </h1>
         <ol className="space-y-4 text-xl text-white font-medium text-justify ">
