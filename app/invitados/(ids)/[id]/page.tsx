@@ -14,7 +14,7 @@ export default function Home() {
     const url = window.location.href;
     const urlParts = url.split("/");
     const id = urlParts[urlParts.length - 1];
-    fetch(`http://localhost:8080/api/invitados/${id}`)
+    fetch(`https://aled-server.onrender.com/api/invitados/${id}`)
       .then((response) => response.json())
       .then((data) => setUserData(data));
   }, []);
