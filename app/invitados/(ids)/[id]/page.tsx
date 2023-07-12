@@ -24,7 +24,7 @@ export default function Home() {
   function handleDownloadImage() {
     const link = document.createElement("a");
     link.href = imageRef?.current?.src;
-    link.download = "invitacion.jpg";
+    link.download = "invitación";
     link.click();
   }
 
@@ -37,9 +37,15 @@ export default function Home() {
       className="flex bg-gradient-to-r from-slate-900 via-purple-900 to-slate-900 pt-10 flex-col text-white items-center min-h-screen w-full"
     >
       <div className="flex items-center">
-        <h1 className="text-3xl animate-pulse font-cap shadow-xl text-pink-300">
-          Hola {userData.name}
-        </h1>{" "}
+        {!userData ? (
+          <div className="w-full flex justify-center">
+            <h1>Cargando...</h1>
+          </div>
+        ) : (
+          <h1 className="text-3xl animate-pulse font-cap shadow-xl text-pink-300">
+            Hola {userData.name}
+          </h1>
+        )}
         <Image
           className="animate-bounce"
           width={55}
@@ -57,7 +63,7 @@ export default function Home() {
               src={userData.urlImage}
               width={150}
               height={150}
-              className="w-[calc(100%-3rem)] mx-auto rounded-3xl shadow-lg shadow-pink-400"
+              className="w-[calc(100%-3rem)] max-w-md mx-auto rounded-3xl shadow-lg shadow-pink-400"
             />
           </div>
         ) : (
@@ -84,12 +90,12 @@ export default function Home() {
             fiesta 💾
           </li>
           <li>
-            <span className="font-extrabold">2.-</span> Al entrar a la fiesta,
-            escanea tu código en la entrada 📲
+            <span className="font-extrabold">2.-</span> Al entrar a la fiesta
+            escanea tu código 📲
           </li>
           <li>
             <span className="font-extrabold">3.-</span> Si deseas salir un
-            momento a la fiesta, vuelve a escanear tu código para evitar
+            momento de la fiesta, vuelve a escanear tu código para evitar
             duplicados 🥷🏻
           </li>
           <li>
